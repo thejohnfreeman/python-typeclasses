@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "typeclasses"
+version = "0.1.0"
+description = "Extensible methods a la Haskell's typeclasses."
+authors = ["John Freeman <jfreeman08@gmail.com>"]
+license = "ISC"
+
+[tool.poetry.dependencies]
+python = "^3.6.2"
+typing_extensions = "^3.7"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.701.0"
+yapf = "^0.27.0"
+pylint = "^2.3"
+pytest = "^4.4"
+isort = "^4.3"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
