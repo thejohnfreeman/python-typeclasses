@@ -1,0 +1,27 @@
+language: python
+
+install:
+  - pip3 install poetry
+  - poetry install
+
+script:
+  - poetry run make lint
+  - poetry run make test
+
+matrix:
+  include:
+    # Only test versions of Python greater than our minimum supported.
+    - os: linux
+      dist: xenial
+      python: 3.6-dev
+    - os: linux
+      dist: xenial
+      python: 3.7-dev
+    - os: linux
+      dist: xenial
+      python: 3.8-dev
+    - os: osx
+      # `xcode10.2` has Python 3.7.3.
+      osx_image: xcode10.2
+      # `language: python` tries to install Python, which fails on OSX.
+      language: shell

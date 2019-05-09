@@ -1,0 +1,14 @@
+[BASIC]
+# Let us omit docstrings for short functions.
+docstring-min-length = 4
+# Let us name parameters of function type ``f`` and type parameters ``T``.
+good-names = f,T
+# fixme: Warns if we leave a TODO or FIXME in the code. These are tech debt
+#   markers that may not have urgent priority.
+# redefined-outer-name: Warns if a local variable shadows a global variable.
+#   We should be able to think locally and ignore global variables.
+disable = fixme,redefined-outer-name
+# Data classes are fine.
+min-public-methods = 0
+# URLs often break the line width limit.
+ignore-long-lines = https?://

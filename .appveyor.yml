@@ -1,0 +1,46 @@
+# Python versions available on AppVeyor are listed here:
+# https://www.appveyor.com/docs/windows-images-software/#python
+# Read the Python Packaging Authority's guide for help:
+# https://packaging.python.org/guides/supporting-windows-using-appveyor/
+environment:
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      ARCH: x86
+      PYTHON: "C:\\Python36"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      ARCH: x86_64
+      PYTHON: "C:\\Python36-x64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      ARCH: x86
+      PYTHON: "C:\\Python36"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      ARCH: x86_64
+      PYTHON: "C:\\Python36-x64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      ARCH: x86
+      PYTHON: "C:\\Python37"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      ARCH: x86_64
+      PYTHON: "C:\\Python37-x64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      ARCH: x86
+      PYTHON: "C:\\Python37"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      ARCH: x86_64
+      PYTHON: "C:\\Python37-x64"
+
+# AppVeyor runs MSBuild by default, which fails if there is no project.
+build: off
+
+install:
+  - ps: |
+      $ErrorActionPreference = "Stop"
+      $env:PATH = "$env:PYTHON;$env:PYTHON\Scripts;$env:PATH"
+      pip --disable-pip-version-check install pip poetry
+      poetry install
+
+test_script:
+  - ps: |
+      $ErrorActionPreference = "Stop"
+      poetry run invoke lint
+      poetry run invoke test
