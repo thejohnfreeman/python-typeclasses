@@ -15,7 +15,7 @@ def get_package_name() -> str:
 def lint(c):
     package_name = get_package_name()
     nproc = multiprocessing.cpu_count()
-    c.run(f'mypy {package_name}.py tests', echo=True, pty=pty)
+    c.run(f'mypy {package_name} tests', echo=True, pty=pty)
     c.run(f'pylint --jobs {nproc} {package_name} tests', echo=True, pty=pty)
     c.run(f'pydocstyle {package_name} tests', echo=True, pty=pty)
 
