@@ -7,35 +7,7 @@ import typing
 
 import pytest  # type: ignore
 
-from typeclasses import typeclass
-
-T = typing.TypeVar('T')
-
-
-@typeclass(T)
-def to_json(value: T) -> str:  # pylint: disable=unused-argument
-    """Serialize a value to JSON."""
-
-
-@to_json.instance(str)
-def _to_json_str(s):
-    return f'"{s}"'
-
-
-@to_json.instance(int)
-@to_json.instance(float)
-def _to_json_number(n):
-    return str(n)
-
-
-@to_json.instance(typing.Mapping, protocol=True)
-def _to_json_mapping(m):
-    return '{' + ','.join(f'"{k}":{to_json(v)}' for k, v in m.items()) + '}'
-
-
-@to_json.instance(typing.Iterable, protocol=True)
-def _to_json_iterable(xs):
-    return '[' + ','.join(to_json(x) for x in xs) + ']'
+from typeclasses.json import to_json
 
 
 @dataclass
@@ -74,7 +46,7 @@ def test_persons():
 
 def test_missing_instance():
     with pytest.raises(NotImplementedError):
-        to_json(True)
+        to_json(object())
 
 
 def test_name():
