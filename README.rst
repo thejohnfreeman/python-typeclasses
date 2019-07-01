@@ -59,7 +59,7 @@ another type:
 
 Many dynamically typed languages, like Python and JavaScript, lack ad hoc
 polymorphism in the language, but developers can implement it by hand by
-inspecting the argument types and dispatching to implementations accordingly.
+inspecting the argument types and dispatching to implementations accordingly:
 
 .. code-block:: python
 
@@ -184,7 +184,8 @@ between a protocol and a type, we must differentiate it for the decorator:
 If a type argument matches multiple protocols, the instance that was first
 defined will be chosen.
 
-Now we can define instances for types whether we defined the type or not.
+Now we can define instances for types whether we defined the type or imported
+it.
 
 .. code-block:: python
 
