@@ -91,8 +91,8 @@ user-defined type:
 
 
 While this example works for serializing ``Person``, we won't be able to
-serialize a :class:`list` of ``Person`` because the implementation of
-``to_json`` for :class:`list` won't call ``to_json_person``.
+serialize a ``list`` of ``Person`` because the implementation of ``to_json``
+for ``list`` won't call ``to_json_person``.
 
 
 Type Classes
@@ -131,7 +131,7 @@ Tutorial
 
 How can we replicate type classes in Python?
 
-Decorate a method signature with a call to :func:`typeclass`, giving it the
+Decorate a method signature with a call to ``typeclass``, giving it the
 name of a type variable. The decorator will check the signature to make sure
 that the type variable appears at least once in the type annotations of the
 parameters. Unlike Haskell, Python cannot infer the *return type* at a call
@@ -146,12 +146,11 @@ site, so that path to instance discovery is impossible; the type variable
        """Serialize a value to JSON."""
 
 We may optionally provide a default implementation. If we do not, the
-default behavior is to raise a :class:`NotImplementedError` diagnosing
+default behavior is to raise a ``NotImplementedError`` diagnosing
 a missing instance for the specific type variable.
 
-The :func:`typeclass` decorator will add an :func:`instance` attribute to the
-method. Use that to decorate monomorphic implementations, giving it the type
-argument:
+The ``typeclass`` decorator will add an ``instance`` attribute to the method.
+Use that to decorate monomorphic implementations, giving it the type argument:
 
 .. code-block:: python
 
