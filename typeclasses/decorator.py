@@ -93,7 +93,7 @@ def typeclass(type_variable):
         if not names:
             raise TypeError(
                 f'type variable `{type_variable}` missing from '
-                f'signature of method `{default_implementation.name}`')
+                f'signature of method `{default_implementation.__name__}`')
         name = names[0]
 
         def get_type_argument(*args, **kwargs):
