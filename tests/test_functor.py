@@ -1,4 +1,4 @@
-"""Test recursive synchronous fmap."""
+"""Test synchronous functor."""
 
 import typing as t
 

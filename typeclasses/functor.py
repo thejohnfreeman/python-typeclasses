@@ -1,4 +1,4 @@
-"""The functor type class."""
+"""The (synchronous) functor type class."""
 
 import itertools
 import typing as t
