@@ -5,8 +5,8 @@ install:
   - poetry install
 
 script:
-  - poetry run make lint
-  - poetry run make test
+  - poetry run invoke lint
+  - poetry run invoke test
 
 matrix:
   include:
