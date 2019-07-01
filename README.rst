@@ -142,7 +142,7 @@ site, so that path to instance discovery is impossible; the type variable
 
    @typeclass('T')
    def to_json(value: 'T') -> str:
-       pass
+       """Serialize a value to JSON."""
 
 We may optionally provide a default implementation. If we do not, the
 default behavior is to raise a :class:`NotImplementedError` diagnosing
@@ -156,7 +156,7 @@ argument:
 
    @to_json.instance(str)
    def _to_json_str(s):
-       ...
+       return f'"{s}"'
 
 We can decorate an implementation multiple times if it can serve multiple
 instances:
@@ -166,7 +166,7 @@ instances:
    @to_json.instance(int)
    @to_json.instance(float)
    def _to_json_number(n):
-       ...
+       return str(n)
 
 We can define an implementation for all types structurally matching
 a protocol_. Because it is presently impossible to infer the difference
@@ -176,7 +176,7 @@ between a protocol and a type, we must differentiate it for the decorator:
 
 .. code-block:: python
 
-   @to_json.instance(typing.Iterable, protocol=true)
+   @to_json.instance(typing.Iterable, protocol=True)
    def _to_json_iterable(xs):
       return '[' + ','.join(to_json(x) for x in xs) + ']'
 
@@ -193,7 +193,7 @@ Now we can define instances for types whether we defined the type or not.
 
 .. code-block:: python
 
-   >>> to_json(list(Person(name='John')))
+   >>> to_json([Person(name='John')])
    [{"name":"John"}]
 
 
