@@ -54,16 +54,16 @@ async def _afmap_mapping(function, mapping):
 
 @afmap.instance(t.Iterator, protocol=True)
 @afmap.instance(range)
-async def _afmap_generator(function, xs):
+async def _afmap_generator(function, generator):
     # These type specializations are awaited unconditionally in :func:`afmap`.
     # If this function itself were a generator, it could not be awaited.
     # Instead, it must return an awaitable that returns an async generator.
     # Gross.
-    async def generator():
-        for x in xs:
+    async def generate():
+        for x in generator:
             yield await afmap(function, x)
 
-    return generator()
+    return generate()
 
 
 @afmap.instance(t.Iterable, protocol=True)

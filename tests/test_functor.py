@@ -5,7 +5,7 @@ import typing as t
 from typeclasses.functor import fmap
 
 
-def times2(x):
+def times2(x):  # pylint: disable=invalid-name
     return x * 2
 
 

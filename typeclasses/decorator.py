@@ -12,18 +12,19 @@ def _docstring():
     """Just an empty function with a docstring."""
 
 
-def _code(f):
+def _code(function):
     """Return the byte code for a function.
 
     If this Python interpreter does not supply the byte code for functions,
     then this function returns NaN so that all functions compare unequal.
     """
-    return f.__code__.co_code if hasattr(f, '__code__') else float('nan')
+    return (function.__code__.co_code
+            if hasattr(function, '__code__') else float('nan'))
 
 
-def _is_empty(f):
+def _is_empty(function):
     """Return whether a function has an empty body."""
-    return _code(f) in (_code(_empty), _code(_docstring))
+    return _code(function) in (_code(_empty), _code(_docstring))
 
 
 class TypeClassMethod:
@@ -55,13 +56,13 @@ class TypeClassMethod:
     def __call__(self, *args, **kwargs):
         type_argument = self.get_type_argument(*args, **kwargs)
 
-        instance = self.type_instances.get(type_argument, None)
-        if instance is not None:
-            return instance(*args, **kwargs)
+        implementation = self.type_instances.get(type_argument, None)
+        if implementation is not None:
+            return implementation(*args, **kwargs)
 
-        for protocol, instance in self.protocol_instances.items():
+        for protocol, implementation in self.protocol_instances.items():
             if issubclass(type_argument, protocol):
-                return instance(*args, **kwargs)
+                return implementation(*args, **kwargs)
 
         if _is_empty(self.default_implementation):
             raise NotImplementedError(
@@ -74,9 +75,9 @@ class TypeClassMethod:
         instances = (self.protocol_instances
                      if protocol else self.type_instances)
 
-        def decorator(f):
-            instances[type_argument] = f
-            return f
+        def decorator(implementation):
+            instances[type_argument] = implementation
+            return implementation
 
         return decorator
 

@@ -49,8 +49,8 @@ def _fmap_mapping(function, mapping):
 
 @fmap.instance(t.Iterator, protocol=True)
 @fmap.instance(range)
-def _fmap_generator(function, xs):
-    for x in xs:
+def _fmap_generator(function, generator):
+    for x in generator:
         yield fmap(function, x)
 
 

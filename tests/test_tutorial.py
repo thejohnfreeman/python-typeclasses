@@ -3,7 +3,6 @@
 # pylint: disable=invalid-name
 
 from dataclasses import dataclass
-import typing
 
 import pytest  # type: ignore
 

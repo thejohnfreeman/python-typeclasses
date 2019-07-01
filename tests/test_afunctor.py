@@ -7,7 +7,7 @@ import pytest  # type: ignore
 from typeclasses.afunctor import afmap
 
 
-async def times2(x):
+async def times2(x):  # pylint: disable=invalid-name
     return x * 2
 
 
