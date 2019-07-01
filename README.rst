@@ -140,8 +140,9 @@ site, so that path to instance discovery is impossible; the type variable
 
 .. code-block:: python
 
-   @typeclass('T')
-   def to_json(value: 'T') -> str:
+   T = typing.TypeVar('T')
+   @typeclass(T)
+   def to_json(value: T) -> str:
        """Serialize a value to JSON."""
 
 We may optionally provide a default implementation. If we do not, the

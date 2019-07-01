@@ -1,0 +1,12 @@
+[pydocstyle]
+# These are preferences:
+# D102 = Missing docstring in public method
+# D103 = Missing docstring in public function
+# D105 = Missing docstring in magic method
+# D107 = Missing docstring in __init__
+# These conflict with the Google style:
+# D202 = No blank lines allowed after function docstring
+# D203 = 1 blank line required before class docstring
+# D213 = Multi-line docstring summary should start at the second line
+# D413 = Missing blank line after last section
+ignore = D102,D103,D105,D107,D202,D203,D213,D413

@@ -1,3 +1,5 @@
+"""The :func:`typeclass` decorator."""
+
 import functools
 import inspect
 
@@ -7,11 +9,7 @@ def _empty():
 
 
 def _docstring():
-    """A docstring."""
-
-
-def _return_type() -> None:
-    pass
+    """Just an empty function with a docstring."""
 
 
 def _code(f):
@@ -25,17 +23,21 @@ def _code(f):
 
 def _is_empty(f):
     """Return whether a function has an empty body."""
-    return _code(f) in (_code(_empty), _code(_docstring), _code(_return_type))
+    return _code(f) in (_code(_empty), _code(_docstring))
 
 
 class TypeClassMethod:
-    """A type class of a single method.
+    """A method of a type class.
 
-    This docstring will be overwritten by that of the default implementation.
+    This docstring will be overwritten by that of the method's default
+    implementation.
     """
 
+    __name__: str
+
     def __init__(self, get_type_argument, default_implementation):
-        """
+        """Construct a type class method.
+
         Parameters
         ----------
         get_type_argument :

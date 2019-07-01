@@ -1,13 +1,19 @@
+"""Test the tutorial from the documentation."""
+
+# pylint: disable=invalid-name
+
 from dataclasses import dataclass
 import typing
 
-import pytest
+import pytest  # type: ignore
 
 from typeclasses import typeclass
 
+T = typing.TypeVar('T')
 
-@typeclass('T')
-def to_json(value: 'T') -> str:
+
+@typeclass(T)
+def to_json(value: T) -> str:  # pylint: disable=unused-argument
     """Serialize a value to JSON."""
 
 
