@@ -20,7 +20,7 @@ docs = ["sphinx", "sphinx_rtd_theme", "toml"]
 
 [tool.poetry.dev-dependencies]
 invoke = "^1.2"
-mypy = "^0.701.0"
+mypy = "^0.711.0"
 pydocstyle = "^3.0"
 pylint = "^2.3"
 pytest = "^4.4"
