@@ -85,9 +85,6 @@ def typeclass(type_variable):
     """Declare a type class of a single method over a single type variable."""
 
     def decorator(default_implementation):
-        # TODO: Find the type variable in the parameter list of the
-        # default_implementation.
-
         sig = inspect.signature(default_implementation)
         names = [
             p.name for p in sig.parameters.values()
