@@ -17,9 +17,11 @@ matrix:
     - os: linux
       dist: xenial
       python: 3.7-dev
-    - os: linux
-      dist: xenial
-      python: 3.8-dev
+    # Disable testing on Python 3.8 until pylint works.
+    # https://github.com/PyCQA/pylint/issues/2976
+    # - os: linux
+    #   dist: xenial
+    #   python: 3.8-dev
     - os: osx
       # `xcode10.2` has Python 3.7.3.
       osx_image: xcode10.2
