@@ -2,7 +2,7 @@
 # Let us omit docstrings for short functions.
 docstring-min-length = 4
 # Let us name parameters of function type ``f`` and type parameters ``T``.
-good-names = f,T
+good-names = f,T,x,xs
 # fixme: Warns if we leave a TODO or FIXME in the code. These are tech debt
 #   markers that may not have urgent priority.
 # redefined-outer-name: Warns if a local variable shadows a global variable.
