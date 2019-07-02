@@ -3,6 +3,7 @@
 docstring-min-length = 4
 # Let us name parameters of function type ``f`` and type parameters ``T``.
 variable-rgx = [a-z_][a-z0-9_]*$
+argument-rgx = [a-z_][a-z0-9_]*$
 # fixme: Warns if we leave a TODO or FIXME in the code. These are tech debt
 #   markers that may not have urgent priority.
 # redefined-outer-name: Warns if a local variable shadows a global variable.
