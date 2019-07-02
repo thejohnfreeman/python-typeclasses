@@ -2,7 +2,7 @@
 
 from string import printable
 
-from hypothesis import assume, given
+from hypothesis import assume, given, HealthCheck, settings
 from hypothesis.strategies import (
     none,
     booleans,
@@ -28,6 +28,7 @@ def test_reflexive(value):
 
 
 @given(json, json)
+@settings(suppress_health_check=[HealthCheck.too_slow])
 def test_injective(a, b):
     assume(a != b)
     assert hexhash(a) != hexhash(b)
