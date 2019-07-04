@@ -23,6 +23,7 @@ json = recursive( # pylint: disable=invalid-name
 
 
 @given(json)
+@settings(suppress_health_check=[HealthCheck.too_slow])
 def test_reflexive(value):
     assert hexhash(value) == hexhash(value)
 
