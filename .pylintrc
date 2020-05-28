@@ -8,7 +8,9 @@ argument-rgx = [a-z_][a-z0-9_]*$
 #   markers that may not have urgent priority.
 # redefined-outer-name: Warns if a local variable shadows a global variable.
 #   We should be able to think locally and ignore global variables.
-disable = fixme,redefined-outer-name
+# isinstance-second-argument-not-valid-type: This is a bug. Pylint fails to
+#   recognize protocols as types. https://github.com/PyCQA/pylint/issues/3507
+disable = fixme,redefined-outer-name,isinstance-second-argument-not-valid-type
 # Data classes are fine.
 min-public-methods = 0
 # URLs often break the line width limit.

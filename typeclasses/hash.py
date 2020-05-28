@@ -25,13 +25,7 @@ def _add_bytes_mapping(stream, mapping):
         add_bytes(stream, v)
 
 
-def binhash(value, algorithm=hashlib.sha256):
+def fhash(value, algorithm=hashlib.sha256):
     stream = algorithm()
     add_bytes(stream, value)
-    return stream.digest()
-
-
-def hexhash(value, algorithm=hashlib.sha256):
-    stream = algorithm()
-    add_bytes(stream, value)
-    return stream.hexdigest()
+    return stream

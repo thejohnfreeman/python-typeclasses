@@ -24,9 +24,10 @@ def lint(c):
 def test(c):
     package_name = get_package_name()
     c.run(
-        f'pytest --cov={package_name} --doctest-modules --ignore=docs --ignore=tasks.py',
+        f'pytest --cov={package_name} --doctest-modules {package_name} tests',
         echo=True,
-        pty=pty)
+        pty=pty
+    )
 
 
 @task
@@ -36,6 +37,8 @@ def html(c):
 
 @task
 def serve(c):
-    c.run('sphinx-autobuild docs docs/_build/html --host 0.0.0.0 --watch .',
-          echo=True,
-          pty=pty)
+    c.run(
+        'sphinx-autobuild docs docs/_build/html --host 0.0.0.0 --watch .',
+        echo=True,
+        pty=pty
+    )
