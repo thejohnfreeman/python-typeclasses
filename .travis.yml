@@ -2,7 +2,7 @@ language: python
 
 install:
   - pip3 install poetry
-  - poetry install
+  - poetry install --extras test
 
 script:
   - poetry run invoke lint
