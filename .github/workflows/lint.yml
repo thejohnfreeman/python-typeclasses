@@ -5,7 +5,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.11
-      - run: poetry install --only lint
+      - run: poetry install --only lint,test
       - run: |
           poetry run mypy src tests
           poetry run pylint src tests
