@@ -1,0 +1,21 @@
+name: lint
+on: [push, pull_request]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pipx install poetry
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+      - run: poetry install --only lint
+      - run: |
+          poetry run mypy src tests
+          poetry run pylint src tests
+          poetry run pydocstyle src tests
+          poetry run yapf --recursive src tests --diff

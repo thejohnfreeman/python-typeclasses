@@ -25,4 +25,4 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - run: poetry install --only test
-      - run: poetry run pytest tests
+      - run: poetry run pytest tests --cov src --doctest-modules src

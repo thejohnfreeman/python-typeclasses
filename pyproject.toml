@@ -19,18 +19,20 @@ toml = "^0.10.2"
 
 [tool.poetry.group.dev.dependencies]
 sphinx-autobuild = "^0.7.1"
+tox = "^4.12.1"
+
+[tool.poetry.group.lint.dependencies]
+mypy = "^1.8.0"
+pydocstyle = "^3.0"
+pylint = "^2.3"
 yapf = "^0.40.2"
 
 [tool.poetry.group.test.dependencies]
 hypothesis = "^6.98.1"
-mypy = "^1.8.0"
-pydocstyle = "^3.0"
-pylint = "^2.3"
 pytest = "^7.4.4"
 pytest-asyncio = "^0.23.4"
 pytest-cov = "^4.1.0"
 toml = "^0.10.2"
-tox = "^4.12.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
