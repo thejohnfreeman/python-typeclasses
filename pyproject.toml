@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "typeclasses"
-version = "0.2.0"
+version = "0.2.1"
 description = "Extensible methods a la Haskell's typeclasses."
 authors = ["John Freeman <jfreeman08@gmail.com>"]
 documentation = "https://python-typeclasses.readthedocs.io/"
