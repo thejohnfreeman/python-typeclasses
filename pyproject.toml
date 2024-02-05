@@ -10,40 +10,29 @@ license = "ISC"
 packages = [{ include = "typeclasses" }]
 
 [tool.poetry.dependencies]
-python = "^3.6-dev"
-dataclasses = {version = "^0.6.0", optional = true}
-hypothesis = {version = "^4.24", optional = true}
-invoke = {version = "^1.2", optional = true}
-mypy = {version = "^0.711.0", optional = true}
-pydocstyle = {version = "^3.0", optional = true}
-pylint = {version = "^2.3", optional = true}
-pytest = {version = "^4.4", optional = true}
-pytest-asyncio = {version = "^0.10.0", optional = true}
-pytest-cov = {version = "^2.7", optional = true}
-sphinx = {version = "^1.8", optional = true}
-sphinx-autobuild = {version = "^0.7.1", optional = true}
-sphinx_rtd_theme = {version = "^0.4.3", optional = true}
-toml = {version = "^0.10.0", optional = true}
-tox = {version = "^3.15.1", optional = true}
-yapf = {version = "^0.27.0", optional = true}
+python = "^3.8"
 
-[tool.poetry.extras]
-dev = ["sphinx-autobuild", "yapf"]
-docs = ["sphinx", "sphinx_rtd_theme", "toml"]
-test = [
-  "dataclasses",
-  "hypothesis",
-  "invoke",
-  "mypy",
-  "pydocstyle",
-  "pylint",
-  "pytest",
-  "pytest-asyncio",
-  "pytest-cov",
-  "toml",
-  "tox",
-]
+[tool.poetry.group.doc.dependencies]
+sphinx = "^1.8"
+sphinx_rtd_theme = "^0.4.3"
+toml = "^0.10.0"
+
+[tool.poetry.group.dev.dependencies]
+sphinx-autobuild = "^0.7.1"
+yapf = "^0.27.0"
+
+[tool.poetry.group.test.dependencies]
+dataclasses = "^0.6.0"
+hypothesis = "^4.24"
+mypy = "^1.8.0"
+pydocstyle = "^3.0"
+pylint = "^2.3"
+pytest = "^7.4.4"
+pytest-asyncio = "^0.23.4"
+pytest-cov = "^4.1.0"
+toml = "^0.10.0"
+tox = "^4.12.1"
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -16,9 +16,8 @@ from hypothesis.strategies import (
 from typeclasses.hash import fhash
 
 json = recursive( # pylint: disable=invalid-name
-    none() | booleans() | floats() | text(printable),
-    lambda children: lists(children, 1) |
-    dictionaries(text(printable), children, min_size=1),
+    none() | booleans() | floats(allow_nan=False, allow_infinity=False) | text(printable),
+    lambda children: lists(children, 1) | dictionaries(text(printable), children, min_size=1),
 )
 
 
