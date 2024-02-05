@@ -18,8 +18,10 @@ def _code(function):
     If this Python interpreter does not supply the byte code for functions,
     then this function returns NaN so that all functions compare unequal.
     """
-    return (function.__code__.co_code
-            if hasattr(function, '__code__') else float('nan'))
+    return (
+        function.__code__.co_code
+        if hasattr(function, '__code__') else float('nan')
+    )
 
 
 def _is_empty(function):
@@ -66,14 +68,16 @@ class TypeClassMethod:
 
         if _is_empty(self.default_implementation):
             raise NotImplementedError(
-                f'missing instance of {self.__name__} for {type_argument}')
+                f'missing instance of {self.__name__} for {type_argument}'
+            )
 
         return self.default_implementation(*args, **kwargs)
 
     def instance(self, type_argument, *, protocol=False):
         """Declare an instance for this type class method."""
-        instances = (self.protocol_instances
-                     if protocol else self.type_instances)
+        instances = (
+            self.protocol_instances if protocol else self.type_instances
+        )
 
         def decorator(implementation):
             instances[type_argument] = implementation
@@ -88,13 +92,15 @@ def typeclass(type_variable):
     def decorator(default_implementation):
         sig = inspect.signature(default_implementation)
         names = [
-            p.name for p in sig.parameters.values()
+            p.name
+            for p in sig.parameters.values()
             if p.annotation == type_variable
         ]
         if not names:
             raise TypeError(
                 f'type variable `{type_variable}` missing from '
-                f'signature of method `{default_implementation.__name__}`')
+                f'signature of method `{default_implementation.__name__}`'
+            )
         name = names[0]
 
         def get_type_argument(*args, **kwargs):
