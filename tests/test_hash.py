@@ -17,7 +17,7 @@ from typeclasses.hash import fhash
 
 json = recursive( # pylint: disable=invalid-name
     none() | booleans() | floats(allow_nan=False, allow_infinity=False) | text(printable),
-    lambda children: lists(children, 1) | dictionaries(text(printable), children, min_size=1),
+    lambda children: lists(children) | dictionaries(text(printable), children, min_size=1),
 )
 
 

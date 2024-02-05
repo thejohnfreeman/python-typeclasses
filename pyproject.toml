@@ -15,22 +15,21 @@ python = "^3.8"
 [tool.poetry.group.doc.dependencies]
 sphinx = "^1.8"
 sphinx_rtd_theme = "^0.4.3"
-toml = "^0.10.0"
+toml = "^0.10.2"
 
 [tool.poetry.group.dev.dependencies]
 sphinx-autobuild = "^0.7.1"
 yapf = "^0.27.0"
 
 [tool.poetry.group.test.dependencies]
-dataclasses = "^0.6.0"
-hypothesis = "^4.24"
+hypothesis = "^6.98.1"
 mypy = "^1.8.0"
 pydocstyle = "^3.0"
 pylint = "^2.3"
 pytest = "^7.4.4"
 pytest-asyncio = "^0.23.4"
 pytest-cov = "^4.1.0"
-toml = "^0.10.0"
+toml = "^0.10.2"
 tox = "^4.12.1"
 
 [build-system]
