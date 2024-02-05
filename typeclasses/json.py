@@ -9,7 +9,7 @@ T = typing.TypeVar('T')  # pylint: disable=invalid-name
 
 
 @typeclass(T)
-def to_json(value: T) -> str:  # pylint: disable=unused-argument
+def to_json(value: T) -> str:  # type: ignore[empty-body] # pylint: disable=unused-argument
     """Serialize a value to JSON."""
 
 
