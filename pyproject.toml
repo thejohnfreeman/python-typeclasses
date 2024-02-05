@@ -7,7 +7,7 @@ documentation = "https://python-typeclasses.readthedocs.io/"
 repository = "https://github.com/thejohnfreeman/python-typeclasses/"
 readme = "README.rst"
 license = "ISC"
-packages = [{ include = "typeclasses" }]
+packages = [{include = "typeclasses", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
