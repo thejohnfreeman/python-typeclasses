@@ -6,14 +6,6 @@ typeclasses
 
 Extensible methods for Python mimicking typeclasses in Haskell.
 
-.. image:: https://travis-ci.org/thejohnfreeman/python-typeclasses.svg?branch=master
-   :target: https://travis-ci.org/thejohnfreeman/python-typeclasses
-   :alt: Build status: Linux and OSX
-
-.. image:: https://ci.appveyor.com/api/projects/status/github/thejohnfreeman/python-typeclasses?branch=master&svg=true
-   :target: https://ci.appveyor.com/project/thejohnfreeman/python-typeclasses
-   :alt: Build status: Windows
-
 .. .. image:: https://readthedocs.org/projects/python-typeclasses/badge/?version=latest
 ..    :target: https://python-typeclasses.readthedocs.io/
 ..    :alt: Documentation status

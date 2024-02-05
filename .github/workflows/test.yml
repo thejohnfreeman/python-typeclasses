@@ -1,0 +1,29 @@
+name: test
+on: [push, pull_request]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform:
+          - ubuntu
+          - macos
+          - windows
+        python:
+          - '3.8'
+          - '3.9'
+          - '3.10'
+          - '3.11'
+    runs-on: ${{ matrix.platform }}-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pipx install poetry
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: 'poetry'
+      - run: poetry install --only test
+      - run: poetry run pytest tests
